@@ -1,0 +1,26 @@
+name: build calendar
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install python packages
+        run: pip install pandas
+
+      - name: generate ics
+        run: python generate_ics.py
+
+      - name: commit ics
+        run: |
+          git config user.name github-actions
+          git config user.email actions@github.com
+          git add calendar.ics
+          git commit -m "update calendar" || echo "no changes"
+          git push
