@@ -38,7 +38,8 @@ def fmt(dt):
 lines = [
 "BEGIN:VCALENDAR",
 "VERSION:2.0",
-"PRODID:-//Course Calendar//EN"
+"PRODID:-//Course Calendar//EN",
+"X-WR-CALNAME:HKU MBA Courses"
 ]
 
 for title, start, end in events:
